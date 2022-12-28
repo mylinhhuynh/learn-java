@@ -1,0 +1,22 @@
+public int executeDB(String sql) { //insert, update, delete
+		int record=0;
+		try {
+			connect();
+			stmt = conn.createStatement();
+			record = stmt.executeUpdate(sql); //so luong hang thay doi sau khi thuc hien 1 trong 3 cau lenh tren
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				conn.close();
+				stmt.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+			}
+		}
+		return record;
+	}
